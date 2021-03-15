@@ -8,16 +8,19 @@ import NotFound from './views/NotFound.vue'
 import { isAuthenticated } from './helpers/useAuth'
 
 const routes = [
-    { path: '/', component: Home},
-    { path: '/secret', component: Secret, beforeEnter: (to, from) => {
-        if (isAuthenticated.value) return true
-        return '/login'},
+  { path: '/', component: Home },
+  { path: '/secret',
+    component: Secret,
+    beforeEnter: (to, from) => {
+      if (isAuthenticated.value) return true
+      return '/login'
     },
-    { path: '/login', component: Login},
-    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+  },
+  { path: '/login', component: Login },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]
 
 export const router = createRouter({
-    history: createWebHistory(),
-    routes,
+  history: createWebHistory(),
+  routes,
 })
